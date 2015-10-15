@@ -1,0 +1,18 @@
+if apktool occurred error message like this:
+----------------------------------------------------------------------------------------------------------------------------
+Exception in thread "main" java.lang.UnsupportedClassVersionError: brut/apktool/Main : Unsupported major.minor version 51.0
+    at java.lang.ClassLoader.defineClass1(Native Method)
+    at java.lang.ClassLoader.defineClassCond(ClassLoader.java:631)
+    at java.lang.ClassLoader.defineClass(ClassLoader.java:615)
+    at java.security.SecureClassLoader.defineClass(SecureClassLoader.java:141)
+    at java.net.URLClassLoader.defineClass(URLClassLoader.java:283)
+    at java.net.URLClassLoader.access$000(URLClassLoader.java:58)
+    at java.net.URLClassLoader$1.run(URLClassLoader.java:197)
+    at java.security.AccessController.doPrivileged(Native Method)
+    at java.net.URLClassLoader.findClass(URLClassLoader.java:190)
+    at java.lang.ClassLoader.loadClass(ClassLoader.java:306)
+    at sun.misc.Launcher$AppClassLoader.loadClass(Launcher.java:301)
+    at java.lang.ClassLoader.loadClass(ClassLoader.java:247)
+Could not find the main class: brut.apktool.Main. Program will exit.
+-----------------------------------------------------------------------------------------------------------------------------
+maybe your java version is too low, update it and test.

@@ -1,0 +1,28 @@
+#!/bin/bash
+# sign unsigned apk with shortcut script
+
+PRG="$0"
+TAR="$1"
+
+### check signapk itself 
+while [ -h "$PRG" ] ; do
+  ls=`ls -ld "$PRG"`
+  link=`expr "$ls" : '.*-> \(.*\)$'`
+  if expr "$link" : '/.*' > /dev/null; then
+    PRG="$link"
+  else
+    PRG=`dirname "$PRG"`/"$link"
+  fi
+done
+PRGDIR=`dirname "$PRG"`
+
+### deal with apk
+APK_BASENAME=$(basename "$TAR")
+SIGNED_APK="signed_"$APK_BASENAME
+
+### sign apk
+java -jar "$PRGDIR"/signapk.jar "$PRGDIR"/platform.x509.pem "$PRGDIR"/platform.pk8 "$TAR" "$SIGNED_APK" 
+
+rm -f "$TAR"
+
+zipalign -v 4 "$SIGNED_APK" "$TAR"
